@@ -1,0 +1,47 @@
+raw_dir: data/raw
+processed_dir: data/processed
+
+sources:
+  - name: ons_furnas_streamflow
+    type: local
+    path: data/raw/ons_furnas_streamflow.csv
+    delimiter: ","
+    encoding: "utf-8"
+    variable: streamflow
+    origin: ONS
+    output_name: historical_streamflow.csv
+    filters:
+      reservoir: Furnas
+    schema:
+      date: date
+      value: inflow
+      station: reservoir
+      basin: basin
+
+  - name: inmet_grande_precipitation
+    type: local
+    path: data/raw/inmet_grande_precipitation.csv
+    delimiter: ","
+    encoding: "utf-8"
+    variable: precipitation
+    origin: INMET
+    output_name: historical_precipitation.csv
+    schema:
+      date: date
+      value: precipitation
+      station: station
+      basin: basin
+
+  - name: grande_etp
+    type: local
+    path: data/raw/grande_etp.csv
+    delimiter: ","
+    encoding: "utf-8"
+    variable: etp
+    origin: ETP_Base
+    output_name: historical_etp.csv
+    schema:
+      date: date
+      value: etp
+      station: source
+      basin: basin

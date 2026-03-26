@@ -1,0 +1,57 @@
+{
+  "raw_dir": "data/raw",
+  "processed_dir": "data/processed",
+  "sources": [
+    {
+      "name": "ons_vazao_furnas",
+      "type": "local",
+      "path": "data/raw/ons_vazao_furnas.csv",
+      "delimiter": ",",
+      "encoding": "utf-8",
+      "variable": "vazao",
+      "origin": "ONS",
+      "output_name": "historico_vazao.csv",
+      "filters": {
+        "reservatorio": "Furnas"
+      },
+      "schema": {
+        "date": "data",
+        "value": "vazao_afluente",
+        "station": "reservatorio",
+        "basin": "bacia"
+      }
+    },
+    {
+      "name": "inmet_precipitacao_grande",
+      "type": "local",
+      "path": "data/raw/inmet_precipitacao_grande.csv",
+      "delimiter": ",",
+      "encoding": "utf-8",
+      "variable": "precipitacao",
+      "origin": "INMET",
+      "output_name": "historico_precipitacao.csv",
+      "schema": {
+        "date": "data",
+        "value": "precipitacao",
+        "station": "estacao",
+        "basin": "bacia"
+      }
+    },
+    {
+      "name": "etp_base_grande",
+      "type": "local",
+      "path": "data/raw/etp_bacia_grande.csv",
+      "delimiter": ",",
+      "encoding": "utf-8",
+      "variable": "etp",
+      "origin": "ETP_Base",
+      "output_name": "historico_etp.csv",
+      "schema": {
+        "date": "data",
+        "value": "etp",
+        "station": "fonte",
+        "basin": "bacia"
+      }
+    }
+  ]
+}
