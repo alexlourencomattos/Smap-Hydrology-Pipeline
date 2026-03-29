@@ -7,9 +7,9 @@ This repository contains a practical, end-to-end project for **hydrology data en
 flowchart LR
  %% Core pipeline
  A[Data Sources] --> B[Ingestion Layer]
- B --> C[Raw Data (Bronze)]
- C --> D[Processed Data (Silver)]
- D --> E[Curated Data (Gold)]
+ B --> C[Raw Data - Bronze]
+ C --> D[Processed Data - Silver]
+ D --> E[Curated Data - Gold]
  E --> F[Analytics / Consumption]
 
  %% Processing layers
@@ -29,8 +29,8 @@ flowchart LR
  %% Cross-cutting
  L[Logging & Monitoring]:::support
  T[Data Quality Tests]:::support
- O[Orchestration (Airflow*)]:::support
- I[Infra (Docker/K8s)]:::support
+ O[Orchestration - Airflow*]:::support
+ I[Infra - Docker/K8s]:::support
 
  L --- B
  L --- D
