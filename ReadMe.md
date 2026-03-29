@@ -3,32 +3,7 @@
 This repository contains a practical, end-to-end project for **hydrology data engineering and SMAP-based modeling** with an energy-market perspective. It focuses on building a reproducible workflow that starts with public historical data and ends with analytics outputs that can support electricity price scenario analysis.
 ## Project Description
 
-flowchart LR
-
-A[Data Sources<br/>Rainfall / Hydrology] --> B[ETL Pipeline<br/>Python (Polars / Pandas)<br/>Ingestion & Transformation]
-
-B --> C[Data Lake<br/>Parquet<br/>Bronze / Silver / Gold]
-
-C --> D[Hydrological Model<br/>R (SMAP Concepts)<br/>Rainfall → Flow]
-
-D --> E[Post-Processing<br/>Python + SQL Logic<br/>Aggregation & Features]
-
-E --> F[Analytics Layer<br/>Dashboards / Data Output]
-
-%% Cross-cutting concerns
-G[Logging & Error Handling] --- B
-G --- D
-G --- E
-
-H[Unit Testing] --- B
-H --- E
-
-I[Containerization<br/>Docker + Kubernetes] --- B
-I --- D
-
-J[(Future Orchestration<br/>Airflow / Prefect)] -.-> B
-J -.-> D
-J -.-> E
+![img_1.png](img_1.png)
 
 ## Features
 1. **Data acquisition and ETL**
