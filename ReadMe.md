@@ -23,7 +23,7 @@ flowchart LR
  E:::storage
 
  %% External model
- D --> M[Hydrology Model (R)]
+ D --> M[Hydrology Model -R ]
  M --> E
 
  %% Cross-cutting
