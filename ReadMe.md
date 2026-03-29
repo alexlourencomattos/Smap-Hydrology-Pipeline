@@ -3,8 +3,54 @@
 This repository contains a practical, end-to-end project for **hydrology data engineering and SMAP-based modeling** with an energy-market perspective. It focuses on building a reproducible workflow that starts with public historical data and ends with analytics outputs that can support electricity price scenario analysis.
 ## Project Description
 
-![img_1.png](img_1.png)
+```mermaid
+flowchart LR
+ %% Core pipeline
+ A[Data Sources] --> B[Ingestion Layer]
+ B --> C[Raw Data (Bronze)]
+ C --> D[Processed Data (Silver)]
+ D --> E[Curated Data (Gold)]
+ E --> F[Analytics / Consumption]
 
+ %% Processing layers
+ B:::compute
+ D:::compute
+ E:::compute
+
+ %% Storage
+ C:::storage
+ D:::storage
+ E:::storage
+
+ %% External model
+ D --> M[Hydrology Model (R)]
+ M --> E
+
+ %% Cross-cutting
+ L[Logging & Monitoring]:::support
+ T[Data Quality Tests]:::support
+ O[Orchestration (Airflow*)]:::support
+ I[Infra (Docker/K8s)]:::support
+
+ L --- B
+ L --- D
+ L --- M
+
+ T --- D
+ T --- E
+
+ I --- B
+ I --- M
+
+ O -.-> B
+ O -.-> D
+ O -.-> E
+
+ %% Styles
+ classDef storage fill:#0ea5e9,stroke:#0369a1,color:#ffffff;
+ classDef compute fill:#22c55e,stroke:#166534,color:#ffffff;
+ classDef support fill:#e5e7eb,stroke:#9ca3af,color:#111827,stroke-dasharray: 5 5;
+```
 ## Features
 1. **Data acquisition and ETL**
    - Ingest historical hydrology and weather datasets from configurable sources (local files or URLs).
